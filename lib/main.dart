@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/pages/history.dart';
 
-import 'package:todo/splash_screen.dart';
-import 'package:todo/todo.dart';
+import 'package:todo/pages/splash_screen.dart';
+import 'package:todo/pages/todo.dart';
+import 'package:todo/pages/routes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +21,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: ToDo());
+        // home: HistoryScreen());
+        routes: {
+          "/": (context) => const SplashScreen(),
+          Routes.splashscreen: (context) => const ToDo(),
+          Routes.todo: (context) => const HistoryScreen(),
+          Routes.history: (context) => const HistoryScreen(),
+        });
   }
 }

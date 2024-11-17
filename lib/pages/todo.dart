@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/pages/routes.dart';
 
 class ToDo extends StatefulWidget {
   const ToDo({super.key});
@@ -27,7 +28,9 @@ class _ToDoState extends State<ToDo> {
           Padding(
             padding: const EdgeInsets.only(right: 10),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, Routes.history);
+              },
               icon: const Icon(Icons.history),
               iconSize: 30,
               color: Colors.white,
