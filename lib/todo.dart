@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ToDo extends StatefulWidget {
   const ToDo({super.key});
@@ -44,18 +45,19 @@ class _ToDoState extends State<ToDo> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Todo-list',
-                  style: TextStyle(
+                  style: GoogleFonts.poppins(
                       color: Colors.white,
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
                 TextButton(
                     onPressed: () {},
-                    child: const Text(
+                    child: Text(
                       'Edit',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
+                      style: GoogleFonts.poppins(
+                          color: Colors.white, fontSize: 12),
                     ))
               ],
             ),
@@ -66,9 +68,9 @@ class _ToDoState extends State<ToDo> {
           Column(
             children: [
               CheckboxListTile(
-                title: const Text(
+                title: Text(
                   "Typing practise",
-                  style: TextStyle(color: Colors.white),
+                  style: GoogleFonts.poppins(color: Colors.white),
                 ),
                 value: _isChecked,
                 onChanged: (bool? newvalue) {
@@ -81,9 +83,9 @@ class _ToDoState extends State<ToDo> {
                 controlAffinity: ListTileControlAffinity.leading,
               ),
               CheckboxListTile(
-                title: const Text(
+                title: Text(
                   "Dart basic",
-                  style: TextStyle(color: Colors.white),
+                  style: GoogleFonts.poppins(color: Colors.white),
                 ),
                 value: _isChecked2,
                 onChanged: (bool? newvalue1) {
@@ -96,9 +98,9 @@ class _ToDoState extends State<ToDo> {
                 controlAffinity: ListTileControlAffinity.leading,
               ),
               CheckboxListTile(
-                title: const Text(
+                title: Text(
                   "Flutter code practise",
-                  style: TextStyle(color: Colors.white),
+                  style: GoogleFonts.poppins(color: Colors.white),
                 ),
                 value: _isChecked3,
                 onChanged: (bool? newvalue1) {
@@ -113,42 +115,36 @@ class _ToDoState extends State<ToDo> {
             ],
           ),
           const SizedBox(
-            height: 440,
+            height: 472,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                        fixedSize: const Size(200, 48),
-                        backgroundColor:
-                            const Color.fromARGB(255, 208, 255, 0)),
-                    child: const Text(
-                      'Submit',
-                      style: TextStyle(
-                          color: Colors.black, fontWeight: FontWeight.bold),
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                width: 25,
-              ),
-              IconButton(
+              ElevatedButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.add_circle_outlined,
-                  color: Color.fromARGB(255, 208, 255, 0),
-                  size: 48,
-                ),
-              )
+                style: ElevatedButton.styleFrom(
+                    fixedSize: const Size(200, 48),
+                    backgroundColor: const Color.fromARGB(255, 208, 255, 0)),
+                child: Text('Submit',
+                    style: GoogleFonts.poppins(
+                        color: Colors.black, fontWeight: FontWeight.bold)),
+              ),
             ],
           ),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.black,
+        child: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.add_circle_outlined,
+            color: Color.fromARGB(255, 208, 255, 0),
+            size: 55,
+          ),
+        ),
       ),
     );
   }
