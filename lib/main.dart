@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import 'package:todo/splash_screen.dart';
+import 'package:todo/todo.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        home: SplashScreen()
-        );
+        home: ToDo());
   }
 }
