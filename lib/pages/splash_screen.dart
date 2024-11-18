@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/pages/routes.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -13,25 +14,32 @@ class SplashScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(
-                  height: 220,
-                ),
-            InkWell(
-              onTap: () {
-                Navigator.pushNamed(context, Routes.splashscreen);
-              },
-              child: Image(
-                image: AssetImage('assets/Logo.png'),
-                height: 350,
-                width: 350,
-                fit: BoxFit.contain,
-              ),
+              height: 280,
             ),
-            Column(mainAxisAlignment: MainAxisAlignment.end,
+            TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.todo);
+                },
+                child: Text(
+                  "ToDo",
+                  style: GoogleFonts.poppins(
+                    color: const Color.fromARGB(255, 208, 255, 0),
+                    fontWeight: FontWeight.w700,
+                    fontSize: 70
+                  ),
+                )),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
-                  height: 190,
+                  height: 250,
                 ),
-                Text('created by GhOsT',style: TextStyle(color: Colors.white,),),
+                Text(
+                  'created by GhOsT',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
               ],
             )
           ],

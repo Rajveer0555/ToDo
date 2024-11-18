@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/pages/routes.dart';
+import 'package:todo/utils/dialog_box.dart';
 
 class ToDo extends StatefulWidget {
   const ToDo({super.key});
@@ -9,9 +10,6 @@ class ToDo extends StatefulWidget {
 }
 
 class _ToDoState extends State<ToDo> {
-  // bool? _isChecked = false;
-  // bool? _isChecked2 = false;
-  // bool? _isChecked3 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,10 +20,13 @@ class _ToDoState extends State<ToDo> {
         ),
         backgroundColor: Colors.black,
         centerTitle: true,
-        title: const Image(
-          image: AssetImage('assets/Logo.png'),
-          height: 150,
-          width: 180,
+        title: Text(
+          "To-Do",
+          style: GoogleFonts.poppins(
+            color: const Color.fromARGB(255, 208, 255, 0),
+            fontSize: 30,
+            fontWeight: FontWeight.w600,
+          ),
         ),
         actions: [
           Padding(
@@ -88,7 +89,14 @@ class _ToDoState extends State<ToDo> {
                 width: 40,
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return DialogBox();
+                    },
+                  );
+                },
                 icon: const Icon(
                   Icons.add_circle_outlined,
                   color: Color.fromARGB(255, 208, 255, 0),

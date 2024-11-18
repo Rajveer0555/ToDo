@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/": (context) => const SplashScreen(),
           Routes.splashscreen: (context) => const ToDo(),
-          Routes.todo: (context) => const HistoryScreen(),
+          Routes.todo: (context) => const ToDo(),
           Routes.history: (context) => const HistoryScreen(),
         });
   }
