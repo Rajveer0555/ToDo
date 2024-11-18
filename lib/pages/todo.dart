@@ -9,14 +9,17 @@ class ToDo extends StatefulWidget {
 }
 
 class _ToDoState extends State<ToDo> {
-  bool? _isChecked = false;
-  bool? _isChecked2 = false;
-  bool? _isChecked3 = false;
+  // bool? _isChecked = false;
+  // bool? _isChecked2 = false;
+  // bool? _isChecked3 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
+        leading: CircleAvatar(
+          backgroundColor: Colors.black,
+        ),
         backgroundColor: Colors.black,
         centerTitle: true,
         title: const Image(
@@ -44,7 +47,7 @@ class _ToDoState extends State<ToDo> {
             height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.only(left: 25),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -55,73 +58,22 @@ class _ToDoState extends State<ToDo> {
                       fontSize: 30,
                       fontWeight: FontWeight.bold),
                 ),
-                TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Edit',
-                      style: GoogleFonts.poppins(
-                          color: Colors.white, fontSize: 12),
-                    ))
               ],
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 90,
           ),
-          Column(
-            children: [
-              CheckboxListTile(
-                title: Text(
-                  "Typing practise",
-                  style: GoogleFonts.poppins(color: Colors.white),
-                ),
-                value: _isChecked,
-                onChanged: (bool? newvalue) {
-                  setState(() {
-                    _isChecked = newvalue;
-                  });
-                },
-                activeColor: const Color.fromARGB(255, 208, 255, 0),
-                checkColor: Colors.black,
-                controlAffinity: ListTileControlAffinity.leading,
-              ),
-              CheckboxListTile(
-                title: Text(
-                  "Dart basic",
-                  style: GoogleFonts.poppins(color: Colors.white),
-                ),
-                value: _isChecked2,
-                onChanged: (bool? newvalue1) {
-                  setState(() {
-                    _isChecked2 = newvalue1;
-                  });
-                },
-                activeColor: const Color.fromARGB(255, 208, 255, 0),
-                checkColor: Colors.black,
-                controlAffinity: ListTileControlAffinity.leading,
-              ),
-              CheckboxListTile(
-                title: Text(
-                  "Flutter code practise",
-                  style: GoogleFonts.poppins(color: Colors.white),
-                ),
-                value: _isChecked3,
-                onChanged: (bool? newvalue1) {
-                  setState(() {
-                    _isChecked3 = newvalue1;
-                  });
-                },
-                activeColor: const Color.fromARGB(255, 208, 255, 0),
-                checkColor: Colors.black,
-                controlAffinity: ListTileControlAffinity.leading,
-              )
-            ],
+          Image(
+            image: AssetImage("assets/main.png"),
+            height: 200,
+            width: 200,
           ),
-          const SizedBox(
-            height: 472,
+          Spacer(
+            flex: 2,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
                 onPressed: () {},
@@ -132,22 +84,23 @@ class _ToDoState extends State<ToDo> {
                     style: GoogleFonts.poppins(
                         color: Colors.black, fontWeight: FontWeight.bold)),
               ),
+              SizedBox(
+                width: 40,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.add_circle_outlined,
+                  color: Color.fromARGB(255, 208, 255, 0),
+                  size: 55,
+                ),
+              ),
             ],
           ),
+          SizedBox(
+            height: 15,
+          )
         ],
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.black,
-        child: IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.add_circle_outlined,
-            color: Color.fromARGB(255, 208, 255, 0),
-            size: 55,
-          ),
-        ),
       ),
     );
   }
