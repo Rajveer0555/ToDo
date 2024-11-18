@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/pages/routes.dart';
 import 'package:todo/utils/dialog_box.dart';
+import 'package:todo/utils/todo_list.dart';
 
 class ToDo extends StatefulWidget {
   const ToDo({super.key});
@@ -50,7 +51,6 @@ class _ToDoState extends State<ToDo> {
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
                   'Todo-list',
@@ -62,13 +62,19 @@ class _ToDoState extends State<ToDo> {
               ],
             ),
           ),
-          const SizedBox(
-            height: 90,
-          ),
-          Image(
-            image: AssetImage("assets/main.png"),
-            height: 200,
-            width: 200,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Column(
+                children: [
+                  ToDoTile(
+                    taskname: "Typing Practise",
+                    taskCompleted: true,
+                    onChanged: (p0) {},
+                  ),
+                ],
+              ),
+            ],
           ),
           Spacer(
             flex: 2,
