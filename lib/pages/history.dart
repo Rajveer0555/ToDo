@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/pages/routes.dart';
+import 'package:todo/utils/alert_history.dart';
 
 class HistoryScreen extends StatelessWidget {
   const HistoryScreen({super.key});
@@ -66,210 +67,14 @@ class HistoryScreen extends StatelessWidget {
                             fontWeight: FontWeight.w600),
                       ),
                       IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 16,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 15,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 14,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 13,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 12,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 11,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.black,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
-              child: Card(
-                color: Colors.white,
-                child: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Text(
-                        "ToDo-list of Nov 10,2024",
-                        style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            showDialog(
+                    context: context,
+                    builder: (context) {
+                      return History();
+                    },
+                  );
+                          },
                           icon: Icon(
                             Icons.expand_circle_down_rounded,
                             color: Colors.black,

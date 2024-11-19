@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           useMaterial3: true,
         ),
-        // home: HistoryScreen());
         routes: {
           "/": (context) => const SplashScreen(),
           Routes.splashscreen: (context) => const ToDo(),

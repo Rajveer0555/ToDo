@@ -69,7 +69,7 @@ class _ToDoState extends State<ToDo> {
                 children: [
                   ToDoTile(
                     taskname: "Typing Practise",
-                    taskCompleted: true,
+                    taskCompleted: false,
                     onChanged: (p0) {},
                   ),
                 ],
