@@ -11,6 +11,32 @@ class ToDo extends StatefulWidget {
 }
 
 class _ToDoState extends State<ToDo> {
+  final _controller = TextEditingController();
+
+  List toDoList = [
+
+  ];
+
+  void checkBoxChanged(bool? value, int index) {
+    setState(() {
+      toDoList[index][1] = !toDoList [index][1];                                     
+    });
+  }
+
+  void saveNewTask () {
+    setState(() {
+      toDoList.add([ _controller.text, false]);
+      _controller.clear();
+    });
+    Navigator.of(context).pop();
+  }
+
+  void deleteTask (int index) {
+    setState(() {
+      toDoList.remove(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,16 +88,27 @@ class _ToDoState extends State<ToDo> {
               ],
             ),
           ),
+          SizedBox(
+            height: 15,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Column(
                 children: [
-                  ToDoTile(
-                    taskname: "Typing Practise",
-                    taskCompleted: false,
-                    onChanged: (p0) {},
-                  ),
+                  SizedBox(
+                    width: 350,
+                    height: 400,
+                    child: ListView.builder(
+                      itemCount: toDoList.length,
+                      itemBuilder: (context, index) {
+                      return ToDoTile(
+                        taskname: toDoList[index][0],
+                        taskCompleted: toDoList[index][1],
+                        onChanged: (value) => checkBoxChanged(value, index),
+                      );
+                    }),
+                  )
                 ],
               ),
             ],
@@ -99,7 +136,10 @@ class _ToDoState extends State<ToDo> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      return DialogBox();
+                      return DialogBox(
+                        onSave: saveNewTask,
+                        controller: _controller,
+                      );
                     },
                   );
                 },
