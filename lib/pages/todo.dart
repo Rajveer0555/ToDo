@@ -33,7 +33,7 @@ class _ToDoState extends State<ToDo> {
 
   void deleteTask (int index) {
     setState(() {
-      toDoList.remove(index);
+      toDoList.removeAt(index);
     });
   }
 
@@ -106,6 +106,7 @@ class _ToDoState extends State<ToDo> {
                         taskname: toDoList[index][0],
                         taskCompleted: toDoList[index][1],
                         onChanged: (value) => checkBoxChanged(value, index),
+                        onClicked: () => deleteTask(index) ,
                       );
                     }),
                   )

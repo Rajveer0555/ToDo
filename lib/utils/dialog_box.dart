@@ -6,6 +6,7 @@ import 'package:todo/utils/my_button.dart';
 class DialogBox extends StatelessWidget {
   final controller;
   VoidCallback onSave;
+  
   DialogBox({super.key, required this.controller, required this.onSave});
 
   @override
