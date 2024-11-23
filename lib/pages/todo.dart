@@ -13,9 +13,7 @@ class ToDo extends StatefulWidget {
 class _ToDoState extends State<ToDo> {
   final _controller = TextEditingController();
 
-  List toDoList = [
-
-  ];
+  List toDoList = [];
 
   void checkBoxChanged(bool? value, int index) {
     setState(() {
@@ -97,7 +95,7 @@ class _ToDoState extends State<ToDo> {
               Column(
                 children: [
                   SizedBox(
-                    width: 350,
+                    width: 380,
                     height: 400,
                     child: ListView.builder(
                       itemCount: toDoList.length,
@@ -121,7 +119,9 @@ class _ToDoState extends State<ToDo> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  
+                },
                 style: ElevatedButton.styleFrom(
                     fixedSize: const Size(200, 48),
                     backgroundColor: const Color.fromARGB(255, 208, 255, 0)),

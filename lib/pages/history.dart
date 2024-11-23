@@ -69,11 +69,11 @@ class HistoryScreen extends StatelessWidget {
                       IconButton(
                           onPressed: () {
                             showDialog(
-                    context: context,
-                    builder: (context) {
-                      return History();
-                    },
-                  );
+                              context: context,
+                              builder: (context) {
+                                return History();
+                              },
+                            );
                           },
                           icon: Icon(
                             Icons.expand_circle_down_rounded,

@@ -22,7 +22,6 @@ class ToDoTile extends StatelessWidget {
         left: 12,
       ),
       child: Container(
-        padding: EdgeInsets.all(0),
         decoration: BoxDecoration(
             color: Colors.black, borderRadius: BorderRadius.circular(12)),
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,12 +36,12 @@ class ToDoTile extends StatelessWidget {
                 Text(
                   taskname,
                   style: TextStyle(
-                    color: taskCompleted ? Colors.grey.shade900 : Colors.white,
+                    color: taskCompleted ? Colors.grey.shade400 : Colors.white,
                   ),
                 ),
               ],
             ),
-            IconButton(onPressed: onClicked, icon: Icon(Icons.delete))
+            IconButton(onPressed: onClicked, icon: Icon(Icons.delete,color: Colors.white,))
           ],
         ),
       ),
