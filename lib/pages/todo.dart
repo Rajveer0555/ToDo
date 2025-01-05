@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+
 import 'package:todo/data/database.dart';
 import 'package:todo/pages/routes.dart';
 import 'package:todo/utils/dialog_box.dart';
 import 'package:todo/utils/todo_list.dart';
 
 class ToDo extends StatefulWidget {
-  const ToDo({super.key});
+  final void Function(int index) deleteTapped; // The callback to delete a task
+  ToDo({
+    super.key,
+    required this.deleteTapped,
+  });
+
   @override
   State<ToDo> createState() => _ToDoState();
 }
@@ -18,36 +25,35 @@ class _ToDoState extends State<ToDo> {
 
   @override
   void initState() {
-    if(_myBox.get("TODOLIST") == null){
-      db.createIntialData(); 
+    super.initState();
+    if (_myBox.get("TODOLIST") == null) {
+      db.createIntialData();
     } else {
       db.loadData();
     }
-    super.initState();
   }
 
   final _controller = TextEditingController();
 
   void checkBoxChanged(bool? value, int index) {
     setState(() {
-      db.toDoList[index][1] = !db.toDoList [index][1];                                     
+      db.toDoList[index][1] = !db.toDoList[index][1];
     });
     db.updateDataBase();
   }
-  
 
-  void saveNewTask () {
+  void saveNewTask() {
     setState(() {
-      db.toDoList.add([ _controller.text, false]);
+      db.toDoList.add([_controller.text, false]);
       _controller.clear();
     });
     Navigator.of(context).pop();
     db.updateDataBase();
   }
 
-  void deleteTask (int index) {
+  void deleteTask(int index) {
     setState(() {
-      db.toDoList.removeAt(index);
+      db.toDoList.removeAt(index); // Remove the task at the specified index
     });
     db.updateDataBase();
   }
@@ -81,74 +87,81 @@ class _ToDoState extends State<ToDo> {
               iconSize: 30,
               color: Colors.white,
             ),
-          )
+          ),
         ],
       ),
       body: Column(
         children: [
-          const SizedBox(
-            height: 20,
-          ),
+          const SizedBox(height: 20),
           Padding(
             padding: const EdgeInsets.only(left: 25),
             child: Row(
               children: [
                 Text(
-                  'Todo-list',
+                  'Tasks list',
                   style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold),
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ],
             ),
           ),
-          SizedBox(
-            height: 15,
+          const SizedBox(height: 15),
+          Expanded(
+            child: ListView.builder(
+              itemCount: db.toDoList.length,
+              itemBuilder: (context, index) {
+                return Slidable(
+                  endActionPane: ActionPane(
+                    motion: const StretchMotion(),
+                    children: [
+                      SlidableAction(
+                        onPressed: (context) {
+                          widget.deleteTapped(
+                              index); // Trigger the delete callback
+                        },
+                        icon: Icons.delete_outline,
+                        backgroundColor: Colors.redAccent.shade400,
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                    ],
+                  ),
+                  child: GestureDetector(
+                    onHorizontalDragEnd: (details) {
+                      // Handle sliding here if needed
+                    },
+                    child: ToDoTile(
+                      taskname: db.toDoList[index][0],
+                      taskCompleted: db.toDoList[index][1],
+                      onChanged: (value) => checkBoxChanged(value, index),
+                      onClicked: () => deleteTask(index),
+                    ),
+                  ),
+                );
+              },
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Column(
-                children: [
-                  SizedBox(
-                    width: 380,
-                    height: 400,
-                    child: ListView.builder(
-                      itemCount: db.toDoList.length,
-                      itemBuilder: (context, index) {
-                      return ToDoTile(
-                        taskname: db.toDoList[index][0],
-                        taskCompleted: db.toDoList[index][1],
-                        onChanged: (value) => checkBoxChanged(value, index),
-                        onClicked: () => deleteTask(index) ,
-                      );
-                    }),
-                  )
-                ],
-              ),
-            ],
-          ),
-          Spacer(
-            flex: 2,
-          ),
+          const SizedBox(height: 20),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               ElevatedButton(
-                onPressed: () {
-                  
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
-                    fixedSize: const Size(200, 48),
-                    backgroundColor: const Color.fromARGB(255, 208, 255, 0)),
-                child: Text('Submit',
-                    style: GoogleFonts.poppins(
-                        color: Colors.black, fontWeight: FontWeight.bold)),
+                  fixedSize: const Size(200, 48),
+                  backgroundColor: const Color.fromARGB(255, 208, 255, 0),
+                ),
+                child: Text(
+                  'Submit',
+                  style: GoogleFonts.poppins(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
-              SizedBox(
-                width: 40,
-              ),
+              const SizedBox(width: 40),
               IconButton(
                 onPressed: () {
                   showDialog(
@@ -169,9 +182,6 @@ class _ToDoState extends State<ToDo> {
               ),
             ],
           ),
-          SizedBox(
-            height: 15,
-          )
         ],
       ),
     );

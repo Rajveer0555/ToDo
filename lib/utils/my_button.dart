@@ -1,5 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MyButton extends StatelessWidget {
   VoidCallback onPressed;
@@ -13,10 +16,9 @@ class MyButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(backgroundColor:const Color.fromARGB(255, 208, 255, 0)),
-      child: Text(text,),
+      child: Text(text,style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.w600),),
     );
   }
 }
