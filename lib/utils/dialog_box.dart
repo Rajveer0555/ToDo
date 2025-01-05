@@ -6,7 +6,7 @@ import 'package:todo/utils/my_button.dart';
 class DialogBox extends StatelessWidget {
   final controller;
   VoidCallback onSave;
-  
+
   DialogBox({super.key, required this.controller, required this.onSave});
 
   @override
@@ -23,7 +23,8 @@ class DialogBox extends StatelessWidget {
                     "Add new task",
                     style: GoogleFonts.poppins(fontSize: 16),
                   )),
-              TextField(
+              TextFormField(
+                textCapitalization: TextCapitalization.sentences,
                 controller: controller,
                 decoration: InputDecoration(border: OutlineInputBorder()),
               ),

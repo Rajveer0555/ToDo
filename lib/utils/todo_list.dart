@@ -24,11 +24,13 @@ class ToDoTile extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
             color: Colors.black, borderRadius: BorderRadius.circular(12)),
-        child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Row(
               children: [
                 Checkbox(
+                  checkColor: Colors.black,
                   value: taskCompleted,
                   onChanged: onChanged,
                   activeColor: const Color.fromARGB(255, 208, 255, 0),
@@ -41,7 +43,12 @@ class ToDoTile extends StatelessWidget {
                 ),
               ],
             ),
-            IconButton(onPressed: onClicked, icon: Icon(Icons.delete,color: Colors.white,))
+            IconButton(
+                onPressed: onClicked,
+                icon: Icon(
+                  Icons.delete,
+                  color: Colors.white,
+                ))
           ],
         ),
       ),
