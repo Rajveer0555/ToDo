@@ -9,51 +9,54 @@ class HistoryScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: Row(
-                children: [
-                  Stack(
-                    children: [
-                      CircleAvatar(
-                        radius: 25,
-                        backgroundColor: Color.fromARGB(255, 208, 255, 0),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, Routes.todo);
-                          },
-                          icon: Icon(
-                            Icons.arrow_back_ios_new_rounded,
-                            size: 30,
-                          ))
-                    ],
-                  ),
-                  SizedBox(
-                    width: 90,
-                  ),
-                  Text(
-                    "History",
-                    style: GoogleFonts.poppins(
-                        color: Colors.white,
-                        fontSize: 28,
-                        fontWeight: FontWeight.w600),
-                  )
-                ],
+            Container(
+              color: Colors.black,
+              height: 100,
+              width: MediaQuery.of(context).size.width,
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  children: [
+                    Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 25,
+                          backgroundColor: Colors.white,
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              Navigator.pushNamed(context, Routes.todo);
+                            },
+                            icon: Icon(
+                              weight: 5,
+                              Icons.arrow_back_ios_new_rounded,
+                              size: 30,
+                            ))
+                      ],
+                    ),
+                    SizedBox(
+                      width: 90,
+                    ),
+                    Text(
+                      "History",
+                      style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 28,
+                          fontWeight: FontWeight.w600),
+                    )
+                  ],
+                ),
               ),
             ),
             SizedBox(
-              height: 35,
-            ),
-            SizedBox(
-              height: 80,
-              width: 360,
+              height: 90,
+              width: MediaQuery.of(context).size.width,
               child: Card(
-                color: Colors.white,
+                color: Colors.black,
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: Row(
@@ -62,8 +65,8 @@ class HistoryScreen extends StatelessWidget {
                       Text(
                         "ToDo-list of Yesterday",
                         style: GoogleFonts.poppins(
-                            color: Colors.black,
-                            fontSize: 16,
+                            color: Colors.white,
+                            fontSize: 20,
                             fontWeight: FontWeight.w600),
                       ),
                       IconButton(
@@ -77,7 +80,7 @@ class HistoryScreen extends StatelessWidget {
                           },
                           icon: Icon(
                             Icons.expand_circle_down_rounded,
-                            color: Colors.black,
+                            color: Colors.white,
                             size: 30,
                           ))
                     ],

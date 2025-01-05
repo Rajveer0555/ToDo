@@ -60,129 +60,155 @@ class _ToDoState extends State<ToDo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      appBar: AppBar(
-        leading: CircleAvatar(
-          backgroundColor: Colors.black,
-        ),
-        backgroundColor: Colors.black,
-        centerTitle: true,
-        title: Text(
-          "To-Do",
-          style: GoogleFonts.poppins(
-            color: const Color.fromARGB(255, 208, 255, 0),
-            fontSize: 30,
-            fontWeight: FontWeight.w600,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.history);
-              },
-              icon: const Icon(Icons.history),
-              iconSize: 30,
-              color: Colors.white,
-            ),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.only(left: 25),
-            child: Row(
-              children: [
-                Text(
-                  'Tasks list',
-                  style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(height: 15),
-          Expanded(
-            child: ListView.builder(
-              itemCount: db.toDoList.length,
-              itemBuilder: (context, index) {
-                return Slidable(
-                  endActionPane: ActionPane(
-                    motion: const StretchMotion(),
-                    children: [
-                      SlidableAction(
-                        onPressed: (context) {
-                          widget.deleteTapped(
-                              index); // Trigger the delete callback
-                        },
-                        icon: Icons.delete_outline,
-                        backgroundColor: Colors.redAccent.shade400,
-                        borderRadius: BorderRadius.circular(5),
+    return SafeArea(
+      child: Center(
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black,
+                      borderRadius: const BorderRadius.only(
+                        bottomLeft:
+                            Radius.circular(25.0), // Rounded bottom-left corner
+                        bottomRight: Radius.circular(
+                            25.0), // Rounded bottom-right corner
                       ),
-                    ],
-                  ),
-                  child: GestureDetector(
-                    onHorizontalDragEnd: (details) {
-                      // Handle sliding here if needed
-                    },
-                    child: ToDoTile(
-                      taskname: db.toDoList[index][0],
-                      taskCompleted: db.toDoList[index][1],
-                      onChanged: (value) => checkBoxChanged(value, index),
-                      onClicked: () => deleteTask(index),
+                    ),
+                    height: 100,
+                    width: MediaQuery.of(context).size.width * 0.9999,
+                    child: Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 15),
+                          child: Row(
+                            children: [
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                'Hii, Rajveer',
+                                style: GoogleFonts.poppins(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(right: 10),
+                                child: IconButton(
+                                  onPressed: () {
+                                    Navigator.pushNamed(
+                                        context, Routes.history);
+                                  },
+                                  icon: const Icon(Icons.history),
+                                  iconSize: 30,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                   ),
-                );
-              },
-            ),
-          ),
-          const SizedBox(height: 20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  fixedSize: const Size(200, 48),
-                  backgroundColor: const Color.fromARGB(255, 208, 255, 0),
-                ),
-                child: Text(
-                  'Submit',
-                  style: GoogleFonts.poppins(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 15),
+                    child: Text(
+                      'Task list',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black),
+                    ),
                   ),
+                ],
+              ),
+              const SizedBox(height: 15),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: db.toDoList.length,
+                  itemBuilder: (context, index) {
+                    return Slidable(
+                      key: ValueKey(index),
+                      endActionPane: ActionPane(
+                        key: ValueKey(index),
+                        motion: const StretchMotion(),
+                        children: [
+                          SlidableAction(
+                            onPressed: (context) {
+                              deleteTask(index);
+                            },
+                            icon: Icons.delete_outline,
+                            backgroundColor: Colors.redAccent.shade400,
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ],
+                      ),
+                      child: ToDoTile(
+                        taskname: db.toDoList[index][0],
+                        taskCompleted: db.toDoList[index][1],
+                        onChanged: (value) => checkBoxChanged(value, index),
+                        onClicked: () => deleteTask(index),
+                      ),
+                    );
+                  },
                 ),
               ),
-              const SizedBox(width: 40),
-              IconButton(
-                onPressed: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      return DialogBox(
-                        onSave: saveNewTask,
-                        controller: _controller,
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      fixedSize: const Size(200, 55),
+                      backgroundColor: Colors.black,
+                    ),
+                    child: Text(
+                      'Submit',
+                      style: GoogleFonts.poppins(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 40),
+                  IconButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return DialogBox(
+                            onSave: saveNewTask,
+                            controller: _controller,
+                          );
+                        },
                       );
                     },
-                  );
-                },
-                icon: const Icon(
-                  Icons.add_circle_outlined,
-                  color: Color.fromARGB(255, 208, 255, 0),
-                  size: 55,
-                ),
+                    icon: const Icon(
+                      Icons.add_circle_outlined,
+                      color: Colors.black,
+                      size: 55,
+                    ),
+                  ),
+                ],
               ),
+              SizedBox(
+                height: 20,
+              )
             ],
           ),
-        ],
+        ),
       ),
     );
   }

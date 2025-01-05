@@ -17,8 +17,8 @@ class MyButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: ElevatedButton.styleFrom(backgroundColor:const Color.fromARGB(255, 208, 255, 0)),
-      child: Text(text,style: GoogleFonts.poppins(color: Colors.black,fontWeight: FontWeight.w600),),
+      style: ElevatedButton.styleFrom(backgroundColor:Colors.black),
+      child: Text(text,style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w600),),
     );
   }
 }

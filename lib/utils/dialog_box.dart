@@ -15,11 +15,13 @@ class DialogBox extends StatelessWidget {
     return AlertDialog(
       backgroundColor: Colors.white,
       content: SizedBox(
-        height: 155,
+        height: 165,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 15,
+            ),
             // Wrap TextFormField with a Form to apply validation
             Form(
               key: _formKey, // Assign the global key to the form
@@ -39,10 +41,14 @@ class DialogBox extends StatelessWidget {
                 },
               ),
             ),
-            SizedBox(height: 15,),
+            SizedBox(
+              height: 20,
+            ),
             Row(
               children: [
-                SizedBox(width: 160,),
+                SizedBox(
+                  width: 160,
+                ),
                 // Update onPressed to validate before calling onSave
                 MyButton(
                   onPressed: () {
