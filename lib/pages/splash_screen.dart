@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:todo/pages/intro_page.dart';
 import 'package:todo/pages/todo.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.pushReplacement(
           context,
           MaterialPageRoute(
-            builder: (context) => ToDo(deleteTapped: (int index) {  },),
+            builder: (context) => IntroPage(),
           ));
     });
   }
@@ -39,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               "ToDo",
               style: GoogleFonts.poppins(
-                  color: const Color.fromARGB(255, 208, 255, 0),
+                  color:  Colors.white,
                   fontWeight: FontWeight.w700,
                   fontSize: 70),
             ),
@@ -50,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   height: 250,
                 ),
                 Text(
-                  'created by GhOsT',
+                  'Version 1.0.0',
                   style: TextStyle(
                     color: Colors.white,
                   ),

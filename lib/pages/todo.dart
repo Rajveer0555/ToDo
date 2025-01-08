@@ -4,15 +4,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:todo/data/database.dart';
+import 'package:todo/pages/history.dart';
 import 'package:todo/pages/routes.dart';
 import 'package:todo/utils/dialog_box.dart';
 import 'package:todo/utils/todo_list.dart';
 
 class ToDo extends StatefulWidget {
-  final void Function(int index) deleteTapped; // The callback to delete a task
+  String name;
   ToDo({
     super.key,
-    required this.deleteTapped,
+    required this.name,
   });
 
   @override
@@ -60,6 +61,7 @@ class _ToDoState extends State<ToDo> {
 
   @override
   Widget build(BuildContext context) {
+    var name;
     return SafeArea(
       child: Center(
         child: Scaffold(
@@ -72,13 +74,11 @@ class _ToDoState extends State<ToDo> {
                     decoration: BoxDecoration(
                       color: Colors.black,
                       borderRadius: const BorderRadius.only(
-                        bottomLeft:
-                            Radius.circular(25.0), // Rounded bottom-left corner
-                        bottomRight: Radius.circular(
-                            25.0), // Rounded bottom-right corner
+                        bottomLeft: Radius.circular(20),
+                        bottomRight: Radius.circular(20),
                       ),
                     ),
-                    height: 100,
+                    height: 80,
                     width: MediaQuery.of(context).size.width * 0.9999,
                     child: Column(
                       children: [
@@ -90,11 +90,11 @@ class _ToDoState extends State<ToDo> {
                                 width: 20,
                               ),
                               Text(
-                                'Hii, Rajveer',
+                                'Hii, ${widget.name}',
                                 style: GoogleFonts.poppins(
                                   color: Colors.white,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w600,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w400,
                                 ),
                               ),
                               Spacer(),
@@ -102,8 +102,7 @@ class _ToDoState extends State<ToDo> {
                                 padding: const EdgeInsets.only(right: 10),
                                 child: IconButton(
                                   onPressed: () {
-                                    Navigator.pushNamed(
-                                        context, Routes.history);
+                                    Navigator.push(context, MaterialPageRoute(builder: (context) => HistoryScreen()));
                                   },
                                   icon: const Icon(Icons.history),
                                   iconSize: 30,
@@ -118,17 +117,22 @@ class _ToDoState extends State<ToDo> {
                   ),
                 ],
               ),
+              SizedBox(
+                height: 15,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: EdgeInsets.only(left: 15),
-                    child: Text(
-                      'Task list',
-                      style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black),
+                    padding: EdgeInsets.only(left: 10),
+                    child: Center(
+                      child: Text(
+                        'Task list',
+                        style: TextStyle(
+                            fontSize: 30,
+                            fontWeight: FontWeight.w900,
+                            color: Colors.black),
+                      ),
                     ),
                   ),
                 ],
@@ -169,7 +173,13 @@ class _ToDoState extends State<ToDo> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      setState(
+                        () {
+                          db.toDoList.clear();
+                        },
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(200, 55),
                       backgroundColor: Colors.black,

@@ -29,6 +29,8 @@ class DialogBox extends StatelessWidget {
                 textCapitalization: TextCapitalization.sentences,
                 controller: controller,
                 decoration: InputDecoration(
+                  focusColor: Colors.amber,
+                  labelStyle: TextStyle(color: Colors.black),
                   labelText: 'Add new task',
                   enabledBorder: OutlineInputBorder(),
                 ),

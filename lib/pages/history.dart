@@ -10,85 +10,100 @@ class HistoryScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: Column(
-          children: [
-            Container(
-              color: Colors.black,
-              height: 100,
-              width: MediaQuery.of(context).size.width,
-              child: Padding(
-                padding: const EdgeInsets.all(15.0),
-                child: Row(
-                  children: [
-                    Stack(
-                      children: [
-                        CircleAvatar(
-                          radius: 25,
-                          backgroundColor: Colors.white,
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              Navigator.pushNamed(context, Routes.todo);
-                            },
-                            icon: Icon(
-                              weight: 5,
-                              Icons.arrow_back_ios_new_rounded,
-                              size: 30,
-                            ))
-                      ],
-                    ),
-                    SizedBox(
-                      width: 90,
-                    ),
-                    Text(
-                      "History",
-                      style: GoogleFonts.poppins(
-                          color: Colors.white,
-                          fontSize: 28,
-                          fontWeight: FontWeight.w600),
-                    )
-                  ],
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 90,
-              width: MediaQuery.of(context).size.width,
-              child: Card(
+      body: Center(
+        child: SafeArea(
+          child: Column(
+            children: [
+              Container(
                 color: Colors.black,
-                child: Align(
-                  alignment: Alignment.centerLeft,
+                height: 100,
+                width: MediaQuery.of(context).size.width,
+                child: Padding(
+                  padding: const EdgeInsets.all(15.0),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      Stack(
+                        children: [
+                          Center(
+                            child: CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.white,
+                            ),
+                          ),
+                          Center(
+                            child: IconButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context, Routes.todo);
+                              },
+                              icon: Icon(
+                                weight: 5,
+                                Icons.arrow_back_ios_new_rounded,
+                                size: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        width: 70,
+                      ),
                       Text(
-                        "ToDo-list of Yesterday",
+                        "History",
                         style: GoogleFonts.poppins(
                             color: Colors.white,
-                            fontSize: 20,
+                            fontSize: 28,
                             fontWeight: FontWeight.w600),
-                      ),
-                      IconButton(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return History();
-                              },
-                            );
-                          },
-                          icon: Icon(
-                            Icons.expand_circle_down_rounded,
-                            color: Colors.white,
-                            size: 30,
-                          ))
+                      )
                     ],
                   ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 10, right: 10),
+                child: SizedBox(
+                  height: 90,
+                  width: MediaQuery.of(context).size.width * 0.9999,
+                  child: Card(
+                    color: Colors.black,
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Text(
+                            "ToDo-list of Yesterday",
+                            style: GoogleFonts.poppins(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600),
+                          ),
+                          IconButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return History();
+                                },
+                              );
+                            },
+                            icon: Icon(
+                              Icons.expand_circle_down_rounded,
+                              color: Colors.white,
+                              size: 30,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
