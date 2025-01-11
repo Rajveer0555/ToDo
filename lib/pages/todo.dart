@@ -5,7 +5,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 import 'package:todo/data/database.dart';
 import 'package:todo/pages/history.dart';
-import 'package:todo/pages/routes.dart';
 import 'package:todo/utils/dialog_box.dart';
 import 'package:todo/utils/todo_list.dart';
 

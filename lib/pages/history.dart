@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:todo/pages/routes.dart';
+import 'package:todo/pages/todo.dart';
 import 'package:todo/utils/alert_history.dart';
 
 class HistoryScreen extends StatelessWidget {
@@ -21,6 +22,7 @@ class HistoryScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(15.0),
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Stack(
                         children: [
@@ -33,7 +35,13 @@ class HistoryScreen extends StatelessWidget {
                           Center(
                             child: IconButton(
                               onPressed: () {
-                                Navigator.pushNamed(context, Routes.todo);
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => ToDo(
+                                      name: '',
+                                    ),
+                                  ),
+                                );
                               },
                               icon: Icon(
                                 weight: 5,
@@ -46,7 +54,7 @@ class HistoryScreen extends StatelessWidget {
                         ],
                       ),
                       SizedBox(
-                        width: 70,
+                        width: 60,
                       ),
                       Text(
                         "History",

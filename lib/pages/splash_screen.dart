@@ -40,7 +40,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Text(
               "ToDo",
               style: GoogleFonts.poppins(
-                  color:  Colors.white,
+                  color: Colors.white,
                   fontWeight: FontWeight.w700,
                   fontSize: 70),
             ),
